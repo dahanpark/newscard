@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="공개 인스타그램 반응으로 살펴보는 가족여행·어린이 체험 모자이크">
+  <meta name="theme-color" content="#f4ff54">
+  <title>아빠 어디가~ | 가족여행 모자이크</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__eyebrow">FAMILY TRIP SOCIAL PICKS</div>
+    <div class="hero__layout">
+      <h1>아빠<br><span>어디가~</span></h1>
+      <div class="hero__copy">
+        <p class="hero__lead">아이 손 잡고,<br>반응 좋은 곳부터.</p>
+        <p id="method-note" class="hero__note"></p>
+      </div>
+    </div>
+    <div class="hero__footer">
+      <nav class="filters" aria-label="여행 유형 필터">
+        <button class="filter is-active" type="button" data-filter="전체" aria-pressed="true">전체</button>
+        <button class="filter" type="button" data-filter="체험" aria-pressed="false">체험</button>
+        <button class="filter" type="button" data-filter="자연" aria-pressed="false">자연</button>
+        <button class="filter" type="button" data-filter="문화" aria-pressed="false">문화</button>
+        <button class="filter" type="button" data-filter="휴식" aria-pressed="false">휴식</button>
+      </nav>
+      <time id="checked-at"></time>
+    </div>
+  </header>
+
+  <main>
+    <section id="trip-grid" class="trip-grid" aria-label="가족여행 인기 게시물" aria-busy="true"></section>
+    <p id="status" class="status" role="status"></p>
+  </main>
+
+  <footer>
+    <p>게시물 반응은 확인 시점의 공개 수치입니다. 일정·요금은 방문 전 공식 채널에서 다시 확인하세요.</p>
+    <a href="https://www.instagram.com/kto9suk9suk/" target="_blank" rel="noopener noreferrer">자료 계정 @kto9suk9suk ↗</a>
+  </footer>
+
+  <template id="trip-template">
+    <article class="trip-card">
+      <a class="trip-card__link" target="_blank" rel="noopener noreferrer">
+        <img class="trip-card__image" alt="" loading="eager" decoding="async">
+        <div class="trip-card__wash"></div>
+        <div class="trip-card__topline">
+          <span class="trip-card__rank"></span>
+          <span class="trip-card__likes"></span>
+        </div>
+        <div class="trip-card__body">
+          <p class="trip-card__meta"></p>
+          <h2 class="trip-card__title"></h2>
+          <p class="trip-card__summary"></p>
+          <p class="trip-card__caution"></p>
+          <span class="trip-card__cta">인스타그램에서 보기 ↗</span>
+        </div>
+      </a>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
