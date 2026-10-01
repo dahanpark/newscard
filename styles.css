@@ -94,9 +94,9 @@ main { padding: var(--gap); background: var(--ink); }
   margin: 0 auto;
 }
 
-.trip-card { min-width: 0; grid-column: span 3; grid-row: span 1; }
-.trip-card[data-size="hero"] { grid-column: span 6; grid-row: span 2; }
-.trip-card[data-size="large"] { grid-column: span 4; grid-row: span 2; }
+.trip-card { min-width: 0; grid-column: span 2; grid-row: span 1; }
+.trip-card[data-size="hero"] { grid-column: span 4; grid-row: span 2; }
+.trip-card[data-size="large"] { grid-column: span 3; grid-row: span 2; }
 .trip-card[hidden] { display: none; }
 
 .trip-card__link {

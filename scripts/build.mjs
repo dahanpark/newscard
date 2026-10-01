@@ -33,10 +33,10 @@ function renderCard(trip, index) {
           <div class="trip-card__wash"></div>
           <div class="trip-card__topline">
             <span class="trip-card__rank">${String(trip.rank).padStart(2, '0')}</span>
-            <span class="trip-card__likes">♥ ${number.format(trip.likes)}</span>
+            <span class="trip-card__likes">반응 ${number.format(trip.engagementScore)}</span>
           </div>
           <div class="trip-card__body">
-            <p class="trip-card__meta">${escape(trip.region)} · ${escape(trip.category)}</p>
+            <p class="trip-card__meta">${escape(trip.account)} · ${escape(trip.region)} · ${escape(trip.category)}${trip.sponsored ? ' · 광고/지원' : ''}</p>
             <h2 class="trip-card__title">${escape(trip.title)}</h2>
             <p class="trip-card__summary">${escape(trip.summary)}</p>
             <p class="trip-card__caution">${escape(trip.caution)}</p>

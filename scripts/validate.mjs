@@ -7,17 +7,19 @@ const roles = ['white', 'black', 'red', 'blue', 'silver', 'purple', 'purple2'];
 const ids = new Set();
 
 if (data.title !== '아빠 어디가~') errors.push('사이트 제목이 올바르지 않습니다.');
-if (!Array.isArray(data.items) || data.items.length < 8) errors.push('최소 8개의 게시물이 필요합니다.');
+if (!Array.isArray(data.items) || data.items.length !== 30) errors.push('공개 표본 인기 30개가 필요합니다.');
 
 data.items?.forEach((item, index) => {
   const at = `items[${index}]`;
-  const required = ['rank', 'size', 'title', 'region', 'category', 'likes', 'summary', 'caution', 'url', 'image', 'alt'];
+  const required = ['rank', 'size', 'title', 'region', 'category', 'account', 'sourceType', 'likes', 'comments', 'engagementScore', 'published', 'summary', 'caution', 'url', 'image', 'alt'];
   required.forEach((key) => { if (item[key] === undefined || item[key] === '') errors.push(`${at}.${key}가 비어 있습니다.`); });
   if (item.rank !== index + 1) errors.push(`${at}.rank가 배열 순서와 다릅니다.`);
-  if (index > 0 && item.likes > data.items[index - 1].likes) errors.push(`${at}가 좋아요 내림차순이 아닙니다.`);
+  if (item.engagementScore !== item.likes + item.comments * 5) errors.push(`${at}.engagementScore 계산이 잘못됐습니다.`);
+  if (index > 0 && item.engagementScore > data.items[index - 1].engagementScore) errors.push(`${at}가 반응점수 내림차순이 아닙니다.`);
   if (!['hero', 'large', 'standard'].includes(item.size)) errors.push(`${at}.size가 잘못됐습니다.`);
   if (!/^https:\/\/www\.instagram\.com\//.test(item.url)) errors.push(`${at}.url은 인스타그램 HTTPS 원문이어야 합니다.`);
   if (!/^assets\/\d{2}\.jpg$/.test(item.image)) errors.push(`${at}.image는 로컬 미리보기 파일이어야 합니다.`);
+  if (typeof item.sponsored !== 'boolean') errors.push(`${at}.sponsored는 boolean이어야 합니다.`);
   if (!fs.existsSync(new URL(`../${item.image}`, import.meta.url))) errors.push(`${at}.image 파일이 없습니다.`);
   if (ids.has(item.url)) errors.push(`${at}.url이 중복입니다.`);
   ids.add(item.url);
