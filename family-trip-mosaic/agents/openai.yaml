@@ -1,7 +1,7 @@
 interface:
   display_name: "아빠 어디가 모자이크"
-  short_description: "인기 가족여행 게시물을 모자이크 웹으로 큐레이션"
+  short_description: "공공·개인 계정의 최신 가족여행 인기 30선을 큐레이션"
   brand_color: "#FF6B35"
-  default_prompt: "Use $family-trip-mosaic to research public family-trip Instagram posts and update the responsive ranked mosaic website."
+  default_prompt: "Use $family-trip-mosaic to research at least 60 recent public posts from official tourism accounts and individual travel or parenting influencers, select a transparent top 30 sample, and update the responsive ranked mosaic website."
 policy:
   allow_implicit_invocation: true
