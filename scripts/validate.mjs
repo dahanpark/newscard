@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 
 const data = JSON.parse(fs.readFileSync(new URL('../trips.json', import.meta.url), 'utf8'));
+const indexHtml = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const errors = [];
 const roles = ['white', 'black', 'red', 'blue', 'silver', 'purple', 'purple2'];
 const ids = new Set();
@@ -26,6 +27,11 @@ roles.forEach((role) => {
   const score = data.review?.[role];
   if (typeof score !== 'number' || score < 9.5 || score > 10) errors.push(`${role} 점수는 9.5–10이어야 합니다.`);
 });
+
+const staticCards = (indexHtml.match(/class="trip-card"/g) || []).length;
+if (staticCards !== data.items.length) errors.push(`index.html 정적 카드가 ${staticCards}개이며 데이터 ${data.items.length}개와 다릅니다.`);
+if (/<template\s+id="trip-template"/.test(indexHtml)) errors.push('index.html이 런타임 템플릿에 의존하고 있습니다.');
+if (/id="trip-grid"[^>]*>\s*<!-- TRIP_CARDS_START -->\s*<!-- TRIP_CARDS_END -->/.test(indexHtml)) errors.push('index.html 모자이크가 비어 있습니다.');
 
 if (errors.length) {
   console.error(`검증 실패 (${errors.length})`);

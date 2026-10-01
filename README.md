@@ -15,7 +15,10 @@
 
 ```sh
 node scripts/serve.mjs
+node scripts/build.mjs
 node scripts/validate.mjs
 ```
+
+`trips.json`을 수정한 뒤에는 반드시 `node scripts/build.mjs`를 실행해 카드 HTML을 `index.html`에 정적으로 기록합니다. 따라서 JavaScript가 꺼져도 모자이크 콘텐츠와 원문 링크가 남습니다.
 
 `main` 브랜치에 push하면 검증 통과 후 GitHub Pages 배포 워크플로가 실행됩니다. 저장소의 Pages 소스는 **GitHub Actions**로 설정해야 합니다.
