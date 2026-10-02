@@ -4,7 +4,9 @@ const cards = [...document.querySelectorAll('.trip-card')];
 
 function applyFilter(category) {
   cards.forEach((card) => {
-    card.hidden = category !== '전체' && card.dataset.category !== category;
+    const matches = category === '전체'
+      || (category === '서울·근교' ? card.dataset.scope === 'seoul-metro' : card.dataset.category === category);
+    card.hidden = !matches;
   });
   filters.forEach((button) => {
     const active = button.dataset.filter === category;

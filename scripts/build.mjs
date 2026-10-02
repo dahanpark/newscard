@@ -26,8 +26,10 @@ function replaceBlock(source, name, content) {
 }
 
 function renderCard(trip, index) {
+  const area = trip.scope ?? (/서울/.test(trip.region) ? 'seoul' : /(경기|인천)/.test(trip.region) ? 'near-seoul' : 'national');
+  const scope = ['seoul', 'near-seoul'].includes(area) ? 'seoul-metro' : 'national';
   return `
-      <article class="trip-card" data-size="${escape(trip.size)}" data-category="${escape(trip.category)}" style="--card-color: ${colors[index % colors.length]}">
+      <article class="trip-card" data-size="${escape(trip.size)}" data-category="${escape(trip.category)}" data-scope="${scope}" data-area="${area}" style="--card-color: ${colors[index % colors.length]}">
         <a class="trip-card__link" href="${escape(trip.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(`${trip.rank}위 ${trip.title}, 인스타그램 원문 열기`)}">
           <img class="trip-card__image" src="${escape(trip.image)}" alt="${escape(trip.alt)}" loading="eager" decoding="async">
           <div class="trip-card__wash"></div>
