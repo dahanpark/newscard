@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const data = JSON.parse(fs.readFileSync(new URL('../trips.json', import.meta.url), 'utf8'));
 const indexHtml = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const errors = [];
-const roles = ['white', 'black', 'red', 'blue', 'silver', 'purple', 'purple2'];
+const roles = ['white', 'black', 'red', 'blue', 'silver', 'gold', 'purple', 'purple2'];
 const ids = new Set();
 
 if (data.title !== '아빠 어디가~') errors.push('사이트 제목이 올바르지 않습니다.');
@@ -41,4 +41,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`검증 통과: 게시물 ${data.items.length}개, 7개 역할 모두 9.5 이상`);
+console.log(`검증 통과: 게시물 ${data.items.length}개, 8개 역할 모두 9.5 이상`);

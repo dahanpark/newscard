@@ -4,7 +4,7 @@
   "sourceAccount": "공식·개인 공개 계정 6곳",
   "sourceFollowers": null,
   "method": "한국관광공사와 개인 여행·지역생활 계정 5곳에서 2026년 9월 이후 공개된 가족 나들이 관련 게시물 58건을 확인하고, 비교 가능한 30건을 공개 반응점수(좋아요+댓글×5) 순으로 정리했습니다. 인스타그램 전체 순위는 아닙니다.",
-  "review": {"white": 9.7, "black": 9.6, "red": 9.6, "blue": 9.6, "silver": 9.6, "purple": 9.7, "purple2": 9.6},
+  "review": {"white": 9.7, "black": 9.6, "red": 9.6, "blue": 9.6, "silver": 9.6, "gold": 9.6, "purple": 9.7, "purple2": 9.6},
   "items": [
     {"rank":1,"size":"hero","title":"박물관에서 서울 한 컷","region":"서울 종로","category":"문화","account":"@kto9suk9suk","sourceType":"공공 관광","likes":4338,"comments":32,"engagementScore":4498,"published":"2026-09-10","sponsored":false,"summary":"대한민국역사박물관 3층에서 광화문광장·경복궁·북악산을 한눈에 보는 도심 코스예요.","caution":"운영시간은 방문 전 박물관 공식 채널 확인","url":"https://www.instagram.com/kto9suk9suk/p/DdI7oM-Eh5X/","image":"assets/01.jpg","alt":"대한민국역사박물관에서 바라본 서울 도심 풍경"},
     {"rank":2,"size":"hero","title":"물멍은 온 가족 취향","region":"전국","category":"휴식","account":"@kto9suk9suk","sourceType":"공공 관광","likes":3356,"comments":29,"engagementScore":3501,"published":"2026-09-22","sponsored":false,"summary":"호수·바다·강을 바라보며 쉬기 좋은 전국 물멍 카페 16곳을 한 번에 모은 저장형 게시물이에요.","caution":"어린이 시설·노키즈 여부는 매장별 확인","url":"https://www.instagram.com/kto9suk9suk/p/DdlQeE5krs5/","image":"assets/02.jpg","alt":"창 너머 물 풍경을 즐기는 카페"},
