@@ -48,7 +48,7 @@ Codex 예약 작업 `매일 아빠 어디가 갱신·배포`가 다음 조건으
 | 상태 | `ACTIVE` |
 | 시각 | 매일 18:00, `Asia/Seoul` |
 | 실행 위치 | 이 로컬 Git 저장소 |
-| 작업 기준 | `family-trip-mosaic/SKILL.md`, `AGENTS.md` |
+| 작업 기준 | 루트 `SKILL.md`, `AGENTS.md` |
 | 성공 조건 | 빌드·검증 통과 및 8개 역할 각각 9.5 이상 |
 | 성공 결과 | 관련 파일 커밋, `origin/main` push, Pages 확인 |
 | 실패 결과 | 기존 배포 유지, 실패 원인 보고 |
@@ -153,7 +153,8 @@ push 뒤에는 GitHub 저장소의 `Actions` 탭에서 `Validate and deploy fami
 
 | 파일 | 역할 |
 |---|---|
-| `family-trip-mosaic/SKILL.md` | AI 조사·편집·검증·배포 절차 |
+| `SKILL.md` | 저장소 첫 화면에서 확인하는 AI 조사·편집·검증·배포 정본 |
+| `family-trip-mosaic/SKILL.md` | 기존 스킬 호출을 루트 정본으로 연결하는 호환 진입점 |
 | `AGENTS.md` | 8개 역할과 9.5점 품질 기준 |
 | `trips.json` | 조사 시각, 방법, 점수와 카드 원본 데이터 |
 | `scripts/build.mjs` | JSON을 정적 카드 HTML로 변환 |
