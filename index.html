@@ -28,7 +28,11 @@
         <button class="filter" type="button" data-filter="문화" aria-pressed="false">문화</button>
         <button class="filter" type="button" data-filter="휴식" aria-pressed="false">휴식</button>
       </nav>
-      <time id="checked-at"><!-- CHECKED_AT_START -->확인 2026. 10. 1. 오후 9:30<!-- CHECKED_AT_END --></time>
+      <div class="freshness">
+        <time id="checked-at"><!-- CHECKED_AT_START -->확인 2026. 10. 1. 오후 9:30<!-- CHECKED_AT_END --></time>
+        <span id="refresh-status" class="refresh-status" role="status" aria-live="polite">최신 자료 확인 대기</span>
+        <button id="refresh-button" class="refresh-button" type="button">새 정보 확인</button>
+      </div>
     </div>
   </header>
 

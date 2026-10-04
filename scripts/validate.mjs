@@ -2,6 +2,7 @@ import fs from 'node:fs';
 
 const data = JSON.parse(fs.readFileSync(new URL('../trips.json', import.meta.url), 'utf8'));
 const indexHtml = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const appJs = fs.readFileSync(new URL('../app.js', import.meta.url), 'utf8');
 const errors = [];
 const roles = ['white', 'black', 'red', 'blue', 'silver', 'gold', 'purple', 'purple2'];
 const ids = new Set();
@@ -34,6 +35,10 @@ const staticCards = (indexHtml.match(/class="trip-card"/g) || []).length;
 if (staticCards !== data.items.length) errors.push(`index.html 정적 카드가 ${staticCards}개이며 데이터 ${data.items.length}개와 다릅니다.`);
 if (/<template\s+id="trip-template"/.test(indexHtml)) errors.push('index.html이 런타임 템플릿에 의존하고 있습니다.');
 if (/id="trip-grid"[^>]*>\s*<!-- TRIP_CARDS_START -->\s*<!-- TRIP_CARDS_END -->/.test(indexHtml)) errors.push('index.html 모자이크가 비어 있습니다.');
+if (!/id="refresh-status"/.test(indexHtml) || !/id="refresh-button"/.test(indexHtml)) errors.push('최신 자료 갱신 상태 UI가 없습니다.');
+if (!/fetch\(dataUrl, \{ cache: 'no-store' \}\)/.test(appJs)) errors.push('페이지를 열 때 캐시 없이 최신 데이터를 요청해야 합니다.');
+if (!/refreshLatest\(\);/.test(appJs)) errors.push('페이지 로드 시 최신 자료 갱신이 실행되지 않습니다.');
+if (!/grid\.replaceChildren\(fragment\)/.test(appJs)) errors.push('검증된 최신 카드로 모자이크를 교체하지 않습니다.');
 
 if (errors.length) {
   console.error(`검증 실패 (${errors.length})`);

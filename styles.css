@@ -80,7 +80,25 @@ h1 span { color: var(--orange); }
   cursor: pointer;
 }
 .filter:hover, .filter:focus-visible, .filter.is-active { color: white; background: var(--ink); outline: none; }
+.freshness { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: .45rem .7rem; }
 #checked-at { font-size: .72rem; font-weight: 800; white-space: nowrap; }
+.refresh-status { font-size: .7rem; font-weight: 750; }
+.refresh-status[data-state="loading"]::before { content: "↻ "; }
+.refresh-status[data-state="success"]::before { content: "● "; color: #087c50; }
+.refresh-status[data-state="fallback"]::before { content: "● "; color: #9a4b00; }
+.refresh-button {
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: .42rem .7rem;
+  color: var(--ink);
+  background: transparent;
+  font: inherit;
+  font-size: .7rem;
+  font-weight: 850;
+  cursor: pointer;
+}
+.refresh-button:hover, .refresh-button:focus-visible { color: white; background: var(--ink); outline: none; }
+.refresh-button:disabled { cursor: wait; opacity: .55; }
 
 main { padding: var(--gap); background: var(--ink); }
 
@@ -118,6 +136,17 @@ main { padding: var(--gap); background: var(--ink); }
   height: 100%;
   object-fit: cover;
   transition: transform .55s cubic-bezier(.2, .8, .2, 1), filter .35s ease;
+}
+.trip-card.image-failed .trip-card__image { display: none; }
+.trip-card.image-failed .trip-card__link::before {
+  content: "이미지 준비 중";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, .7);
+  font-size: .72rem;
+  font-weight: 850;
 }
 
 .trip-card__wash {
@@ -187,6 +216,7 @@ footer a { color: var(--acid); font-weight: 850; white-space: nowrap; }
   .hero__copy { display: block; }
   .hero__lead { font-size: 1.8rem; }
   .hero__footer { align-items: start; flex-direction: column; }
+  .freshness { justify-content: flex-start; }
   .trip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: min(62vw, 18rem); }
   .trip-card, .trip-card[data-size="large"] { grid-column: span 1; grid-row: span 1; }
   .trip-card[data-size="hero"] { grid-column: span 2; grid-row: span 2; }
